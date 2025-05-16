@@ -1,6 +1,5 @@
-import { LibroEntity } from 'src/libro/libro.entity/libro.entity';
+import { LibroEntity } from '../../libro/libro.entity/libro.entity';
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { JoinAttribute } from 'typeorm/query-builder/JoinAttribute';
 
 @Entity()
 export class BibliotecaEntity {

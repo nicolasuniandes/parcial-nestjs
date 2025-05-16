@@ -1,4 +1,4 @@
-import { BibliotecaEntity } from 'src/biblioteca/biblioteca.entity/biblioteca.entity';
+import { BibliotecaEntity } from '../../biblioteca/biblioteca.entity/biblioteca.entity';
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 

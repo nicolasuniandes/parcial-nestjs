@@ -1,6 +1,6 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BibliotecaEntity } from 'src/biblioteca/biblioteca.entity/biblioteca.entity';
-import { LibroEntity } from 'src/libro/libro.entity/libro.entity';
+import { BibliotecaEntity } from '../../biblioteca/biblioteca.entity/biblioteca.entity';
+import { LibroEntity } from '../../libro/libro.entity/libro.entity';
 
 export const TypeOrmTestingConfig = () => [
  TypeOrmModule.forRoot({
