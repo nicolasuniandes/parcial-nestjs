@@ -35,13 +35,14 @@ describe('BibliotecaService', () => {
         nombre: faker.company.name(),
         direccion: faker.location.streetAddress(),
         ciudad: faker.location.city(),
-        horario: faker.string.alphanumeric()
-      })
+        horario_apertura: '08:00:00',
+        horario_cierre: '18:00:00'
+      });
       bibliotecasList.push(biblioteca);
     }
   }
 
-  it('findAll should return all museums', async () => {
+  it('findAll should return all libraries', async () => {
     const biblioteca: BibliotecaEntity[] = await service.findAll();
     expect(biblioteca).not.toBeNull();
     expect(biblioteca).toHaveLength(bibliotecasList.length);
@@ -51,10 +52,11 @@ describe('BibliotecaService', () => {
     const storedBiblioteca: BibliotecaEntity = bibliotecasList[0];
     const biblioteca: BibliotecaEntity = await service.findOne(storedBiblioteca.id);
     expect(biblioteca).not.toBeNull();
-    expect(biblioteca.nombre).toEqual(storedBiblioteca.nombre)
-    expect(biblioteca.direccion).toEqual(storedBiblioteca.direccion)
-    expect(biblioteca.ciudad).toEqual(storedBiblioteca.ciudad)
-    expect(biblioteca.horario).toEqual(storedBiblioteca.horario)
+    expect(biblioteca.nombre).toEqual(storedBiblioteca.nombre);
+    expect(biblioteca.direccion).toEqual(storedBiblioteca.direccion);
+    expect(biblioteca.ciudad).toEqual(storedBiblioteca.ciudad);
+    expect(biblioteca.horario_apertura).toEqual(storedBiblioteca.horario_apertura);
+    expect(biblioteca.horario_cierre).toEqual(storedBiblioteca.horario_cierre);
   });
 
   it('findOne should throw an exception for an invalid library', async () => {
@@ -67,50 +69,61 @@ describe('BibliotecaService', () => {
       nombre: faker.company.name(),
       direccion: faker.location.streetAddress(),
       ciudad: faker.location.city(),
-      horario: faker.string.alphanumeric(),
+      horario_apertura: '09:00:00',
+      horario_cierre: '17:00:00',
       libros: []
     }
 
     const newBiblioteca: BibliotecaEntity = await service.create(biblioteca);
     expect(newBiblioteca).not.toBeNull();
 
-    const storedBiblioteca: BibliotecaEntity = await repository.findOne({ where: { id: newBiblioteca.id } })
+    const storedBiblioteca: BibliotecaEntity = await repository.findOne({ where: { id: newBiblioteca.id } });
     expect(storedBiblioteca).not.toBeNull();
-    expect(storedBiblioteca.nombre).toEqual(newBiblioteca.nombre)
-    expect(storedBiblioteca.direccion).toEqual(newBiblioteca.direccion)
-    expect(storedBiblioteca.ciudad).toEqual(newBiblioteca.ciudad)
-    expect(storedBiblioteca.horario).toEqual(newBiblioteca.horario)
+    expect(storedBiblioteca.nombre).toEqual(newBiblioteca.nombre);
+    expect(storedBiblioteca.direccion).toEqual(newBiblioteca.direccion);
+    expect(storedBiblioteca.ciudad).toEqual(newBiblioteca.ciudad);
+    expect(storedBiblioteca.horario_apertura).toEqual(newBiblioteca.horario_apertura);
+    expect(storedBiblioteca.horario_cierre).toEqual(newBiblioteca.horario_cierre);
   });
 
   it('update should modify a library', async () => {
     const biblioteca: BibliotecaEntity = bibliotecasList[0];
     biblioteca.nombre = "New name";
     biblioteca.direccion = "New address";
+    biblioteca.horario_apertura = '10:00:00';
+    biblioteca.horario_cierre = '16:00:00';
+
     const updatedBiblioteca: BibliotecaEntity = await service.update(biblioteca.id, biblioteca);
     expect(updatedBiblioteca).not.toBeNull();
-    const storedBiblioteca: BibliotecaEntity = await repository.findOne({ where: { id: biblioteca.id } })
+
+    const storedBiblioteca: BibliotecaEntity = await repository.findOne({ where: { id: biblioteca.id } });
     expect(storedBiblioteca).not.toBeNull();
-    expect(storedBiblioteca.nombre).toEqual(biblioteca.nombre)
-    expect(storedBiblioteca.direccion).toEqual(biblioteca.direccion)
+    expect(storedBiblioteca.nombre).toEqual(biblioteca.nombre);
+    expect(storedBiblioteca.direccion).toEqual(biblioteca.direccion);
+    expect(storedBiblioteca.horario_apertura).toEqual(biblioteca.horario_apertura);
+    expect(storedBiblioteca.horario_cierre).toEqual(biblioteca.horario_cierre);
   });
 
   it('update should throw an exception for an invalid library', async () => {
     let biblioteca: BibliotecaEntity = bibliotecasList[0];
     biblioteca = {
-      ...biblioteca, nombre: "New name", direccion: "New address"
-    }
+      ...biblioteca,
+      nombre: "New name",
+      direccion: "New address",
+      horario_apertura: '10:00:00',
+      horario_cierre: '16:00:00'
+    };
     await expect(() => service.update("0", biblioteca)).rejects.toHaveProperty("message", "The library with the given id was not found")
   });
 
   it('delete should remove a library', async () => {
     const biblioteca: BibliotecaEntity = bibliotecasList[0];
     await service.delete(biblioteca.id);
-    const deletedBiblioteca: BibliotecaEntity = await repository.findOne({ where: { id: biblioteca.id } })
+    const deletedBiblioteca: BibliotecaEntity = await repository.findOne({ where: { id: biblioteca.id } });
     expect(deletedBiblioteca).toBeNull();
   });
 
   it('delete should throw an exception for an invalid library', async () => {
-    const museum: BibliotecaEntity = bibliotecasList[0];
     await expect(() => service.delete("0")).rejects.toHaveProperty("message", "The library with the given id was not found")
   });
 

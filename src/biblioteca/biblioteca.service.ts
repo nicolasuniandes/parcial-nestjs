@@ -25,6 +25,7 @@ export class BibliotecaService {
     }
 
     async create(biblioteca: BibliotecaEntity): Promise<BibliotecaEntity> {
+        this.validateOpeningHours(biblioteca);
         return await this.bibliotecaRepository.save(biblioteca);
     }
 
@@ -33,6 +34,8 @@ export class BibliotecaService {
         if (!persistedBiblioteca)
           throw new BusinessLogicException("The library with the given id was not found", BusinessError.NOT_FOUND);
         
+        this.validateOpeningHours(biblioteca);
+
         return await this.bibliotecaRepository.save({...persistedBiblioteca, ...biblioteca});
     }
 
@@ -42,5 +45,17 @@ export class BibliotecaService {
           throw new BusinessLogicException("The library with the given id was not found", BusinessError.NOT_FOUND);
      
         await this.bibliotecaRepository.remove(biblioteca);
+    }
+
+    private validateOpeningHours(biblioteca: BibliotecaEntity) {
+        const apertura = biblioteca.horario_apertura;
+        const cierre = biblioteca.horario_cierre;
+
+        if (cierre <= apertura) {
+            throw new BusinessLogicException(
+                "Closing time must be later than opening time",
+                BusinessError.PRECONDITION_FAILED
+            );
+        }
     }
 }

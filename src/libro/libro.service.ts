@@ -25,6 +25,7 @@ export class LibroService {
     }
 
     async create(libro: LibroEntity): Promise<LibroEntity> {
+        this.validatePublishingDate(libro)
         return await this.libroRepository.save(libro);
     }
 
@@ -33,6 +34,8 @@ export class LibroService {
         if (!persistedLibro)
             throw new BusinessLogicException("The book with the given id was not found", BusinessError.NOT_FOUND);
 
+        this.validatePublishingDate(libro)
+        
         return await this.libroRepository.save({ ...persistedLibro, ...libro });
     }
 
@@ -42,5 +45,14 @@ export class LibroService {
             throw new BusinessLogicException("The book with the given id was not found", BusinessError.NOT_FOUND);
 
         await this.libroRepository.remove(libro);
+    }
+
+    private validatePublishingDate(libro: LibroEntity){
+        const hoy = new Date();
+        const libroFecha = new Date(libro.fecha);
+
+        if (libroFecha > hoy){
+            throw new BusinessLogicException("The book's publication date cannot be in the future", BusinessError.PRECONDITION_FAILED);
+        }
     }
 }

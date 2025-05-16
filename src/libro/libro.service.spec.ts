@@ -35,7 +35,7 @@ describe('LibroService', () => {
         titulo: faker.lorem.sentence(),
         autor: faker.person.fullName(),
         fecha: faker.date.past().toISOString().split('T')[0],
-        isbn: faker.string.alphanumeric(13)
+        isbn: faker.string.alphanumeric()
       });
       librosList.push(libro);
     }
@@ -66,8 +66,9 @@ describe('LibroService', () => {
       id: "",
       titulo: faker.lorem.sentence(),
       autor: faker.person.fullName(),
-      fecha: faker.date.past().toISOString().split('T')[0],
+      fecha: faker.date.past(),
       isbn: faker.string.alphanumeric(13),
+      bibliotecas: []
     };
 
     const newLibro: LibroEntity = await service.create(libro);

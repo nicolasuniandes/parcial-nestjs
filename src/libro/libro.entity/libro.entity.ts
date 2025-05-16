@@ -14,7 +14,7 @@ export class LibroEntity {
     autor: string;
 
     @Column()
-    fecha: string;
+    fecha: Date;
 
     @Column()
     isbn: string;
