@@ -6,6 +6,7 @@ import { LibroModule } from './libro/libro.module';
 import { BibliotecaEntity } from './biblioteca/biblioteca.entity/biblioteca.entity';
 import { LibroEntity } from './libro/libro.entity/libro.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { BibliotecaLibroModule } from './biblioteca-libro/biblioteca-libro.module';
 
 @Module({
   imports: [BibliotecaModule, LibroModule,
@@ -20,6 +21,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       dropSchema: true,
       synchronize: true,
     }),
+    BibliotecaLibroModule,
   ],
   controllers: [AppController],
   providers: [AppService],
