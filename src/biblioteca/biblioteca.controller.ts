@@ -5,10 +5,10 @@ import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-erro
 import { BibliotecaDto } from './biblioteca.dto/biblioteca.dto';
 import { BibliotecaEntity } from './biblioteca.entity/biblioteca.entity';
 
-@Controller('bibliotecas')
+@Controller('libraries')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class BibliotecaController {
-    constructor(private readonly bibliotecaService: BibliotecaService){}
+    constructor(private readonly bibliotecaService: BibliotecaService) { }
 
     @Get()
     async findAll() {
@@ -21,7 +21,7 @@ export class BibliotecaController {
     }
 
     @Post()
-    async create(@Body() bibliotecaDto: BibliotecaDto){
+    async create(@Body() bibliotecaDto: BibliotecaDto) {
         const biblioteca: BibliotecaEntity = plainToInstance(BibliotecaEntity, bibliotecaDto);
         return await this.bibliotecaService.create(biblioteca);
     }

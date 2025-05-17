@@ -5,10 +5,10 @@ import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-erro
 import { LibroDto } from './libro.dto/libro.dto';
 import { LibroEntity } from './libro.entity/libro.entity';
 
-@Controller('libros')
+@Controller('books')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class LibroController {
-    constructor(private readonly libroService: LibroService) {}
+    constructor(private readonly libroService: LibroService) { }
 
     @Get()
     async findAll() {
