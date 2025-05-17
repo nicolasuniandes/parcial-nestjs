@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class BibliotecaDto {
+export class LibroDto {
     @IsString()
     @IsNotEmpty()
     readonly titulo: string;
