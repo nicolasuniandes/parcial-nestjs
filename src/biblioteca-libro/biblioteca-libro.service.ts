@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { BibliotecaEntity } from 'src/biblioteca/biblioteca.entity/biblioteca.entity';
-import { LibroEntity } from 'src/libro/libro.entity/libro.entity';
+import { BibliotecaEntity } from '../biblioteca/biblioteca.entity/biblioteca.entity';
+import { LibroEntity } from '../libro/libro.entity/libro.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 
 @Injectable()
 export class BibliotecaLibroService {
