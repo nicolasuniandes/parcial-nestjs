@@ -1,0 +1,1205 @@
+{
+	"info": {
+		"_postman_id": "f3e915a7-e117-4abc-b8c1-ac3205fa3109",
+		"name": "Biblioteca-Libro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21267090"
+	},
+	"item": [
+		{
+			"name": "Crear una biblioteca (1/1)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"biblioteca_id\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"nombre\": \"Libreria de Bogota\",\n   \"direccion\": \"Calle 21 N 14\",\n   \"ciudad\": \"Bogota\",\n   \"horario_apertura\": \"09:30:00\",\n   \"horario_cierre\": \"16:00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/libraries",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear una biblioteca",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"nombre\": \"Libreria Nacional\",\n   \"direccion\": \"Calle 42 N 27\",\n   \"ciudad\": \"Bucaramanga\",\n   \"horario_apertura\": \"10:00:00\",\n   \"horario_cierre\": \"21:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/libraries",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Libreria de libros\",\n    \"direccion\": \"Calle 42 N 25 a 48\",\n    \"ciudad\": \"Bucaramanga\",\n    \"horario_apertura\": \"10:00:00\",\n    \"horario_cierre\": \"21:00:00\",\n    \"id\": \"69f47300-6443-402e-9876-4b2b69358f26\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear un libro (1/2)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"libro_id_1\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"El amor en los tiempos del covid\",\n    \"autor\": \"Garcia Marquez\",\n    \"fecha\": \"03-05-2022\",\n    \"isbn\": \"RB-789\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/books",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear un libro",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"1984\",\n    \"autor\": \"George Orwell\",\n    \"fecha\": \"10-02-1999\",\n    \"isbn\": \"RB-123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/books",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"titulo\": \"1984\",\n    \"autor\": \"George Orwell\",\n    \"fecha\": \"10-02-1999\",\n    \"isbn\": \"RB-123\",\n    \"id\": \"ae9aac7d-e173-4d31-8f5d-1ce313f36938\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear un libro (2/2)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"libro_id_2\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"El amor en los tiempos del covid\",\n    \"autor\": \"Garcia Marquez\",\n    \"fecha\": \"03-05-2022\",\n    \"isbn\": \"RB-789\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/books",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear un libro",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"1984\",\n    \"autor\": \"George Orwell\",\n    \"fecha\": \"10-02-1999\",\n    \"isbn\": \"RB-123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/books",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"titulo\": \"1984\",\n    \"autor\": \"George Orwell\",\n    \"fecha\": \"10-02-1999\",\n    \"isbn\": \"RB-123\",\n    \"id\": \"ae9aac7d-e173-4d31-8f5d-1ce313f36938\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar un libro a una biblioteca",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/libraries/{{biblioteca_id}}/books/{{libro_id_1}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"{{biblioteca_id}}",
+						"books",
+						"{{libro_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar un libro a una biblioteca",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"391e38bf-e543-4ca1-978f-1ba2eeceb055\",\n    \"nombre\": \"Libreria de Bogota\",\n    \"direccion\": \"Calle 21 N 14\",\n    \"ciudad\": \"Bogota\",\n    \"horario_apertura\": \"09:30:00\",\n    \"horario_cierre\": \"16:00:00\",\n    \"libros\": [\n        {\n            \"id\": \"cd38f72b-b36a-4924-8c26-5cecb8d5c968\",\n            \"titulo\": \"El amor en los tiempos del covid\",\n            \"autor\": \"Garcia Marquez\",\n            \"fecha\": \"2022-03-05T05:00:00.000Z\",\n            \"isbn\": \"RB-789\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar un libro que no existe a una biblioteca",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The book with the given id was not found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/libraries/{{biblioteca_id}}/books/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"{{biblioteca_id}}",
+						"books",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar un libro que no existe a una biblioteca",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/libraries/{{biblioteca_id}}/books/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"{{biblioteca_id}}",
+								"books",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The book with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar un libro a una biblioteca que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The library with the given id was not found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books/{{libro_id_1}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"00000000-0000-0000-0000-000000000000",
+						"books",
+						"{{libro_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar un libro a una biblioteca que no existe",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books/{{libro_id_1}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books",
+								"{{libro_id_1}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The library with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener libros de una biblioteca",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of books > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/libraries/{{biblioteca_id}}/books",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"{{biblioteca_id}}",
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener libros de una biblioteca",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"cd38f72b-b36a-4924-8c26-5cecb8d5c968\",\n        \"titulo\": \"El amor en los tiempos del covid\",\n        \"autor\": \"Garcia Marquez\",\n        \"fecha\": \"2022-03-05T05:00:00.000Z\",\n        \"isbn\": \"RB-789\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener libros de una biblioteca que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The library with the given id was not found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"00000000-0000-0000-0000-000000000000",
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener libros de una biblioteca que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The library with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un libro de una biblioteca",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/libraries/{{biblioteca_id}}/books/{{libro_id_1}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"{{biblioteca_id}}",
+						"books",
+						"{{libro_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un libro de una biblioteca",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"cd38f72b-b36a-4924-8c26-5cecb8d5c968\",\n    \"titulo\": \"El amor en los tiempos del covid\",\n    \"autor\": \"Garcia Marquez\",\n    \"fecha\": \"2022-03-05T05:00:00.000Z\",\n    \"isbn\": \"RB-789\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un libro que no está asociado a una biblioteca",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"   pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The book is not associated to the given library\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/libraries/{{biblioteca_id}}/books/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"{{biblioteca_id}}",
+						"books",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un libro que no está asociado a una biblioteca",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The book is not associated to the given library\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un libro de una biblioteca que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The library with the given id was not found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books/{{libro_id_1}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"00000000-0000-0000-0000-000000000000",
+						"books",
+						"{{libro_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un libro de una biblioteca que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The library with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar libros de una biblioteca",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": \"{{libro_id_2}}\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/libraries/{{biblioteca_id}}/books",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"{{biblioteca_id}}",
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar libros de una biblioteca",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"id\": \"add9d245-590f-4acc-827c-77c2abb28fcd\",\n        \"titulo\": \"Cien añps de seriedad\",\n        \"autor\": \"Garcia Marquez\",\n        \"fecha\": \"1978-01-01T00:00:00.000Z\",\n        \"isbn\": \"RB-666\"\n    },\n    {\n        \"id\": \"cd38f72b-b36a-4924-8c26-5cecb8d5c968\",\n        \"titulo\": \"El amor en los tiempos del covid\",\n        \"autor\": \"Garcia Marquez\",\n        \"fecha\": \"2022-03-05T05:00:00.000Z\",\n        \"isbn\": \"RB-789\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"391e38bf-e543-4ca1-978f-1ba2eeceb055\",\n    \"nombre\": \"Libreria de Bogota\",\n    \"direccion\": \"Calle 21 N 14\",\n    \"ciudad\": \"Bogota\",\n    \"horario_apertura\": \"09:30:00\",\n    \"horario_cierre\": \"16:00:00\",\n    \"libros\": [\n        {\n            \"id\": \"add9d245-590f-4acc-827c-77c2abb28fcd\",\n            \"titulo\": \"Cien añps de seriedad\",\n            \"autor\": \"Garcia Marquez\",\n            \"fecha\": \"1978-01-01T00:00:00.000Z\",\n            \"isbn\": \"RB-666\"\n        },\n        {\n            \"id\": \"cd38f72b-b36a-4924-8c26-5cecb8d5c968\",\n            \"titulo\": \"El amor en los tiempos del covid\",\n            \"autor\": \"Garcia Marquez\",\n            \"fecha\": \"2022-03-05T05:00:00.000Z\",\n            \"isbn\": \"RB-789\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar libros que no existen a una biblioteca",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The book with the given id was not found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    {\n        \"id\": \"00000000-0000-0000-0000-000000000001\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/libraries/{{biblioteca_id}}/books",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"{{biblioteca_id}}",
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar libros que no existen a una biblioteca",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"id\": \"add9d245-590f-4acc-827c-77c2abb28fcd\",\n        \"titulo\": \"Cien añps de seriedad\",\n        \"autor\": \"Garcia Marquez\",\n        \"fecha\": \"1978-01-01T00:00:00.000Z\",\n        \"isbn\": \"RB-666\"\n    },\n    {\n        \"id\": \"cd38f72b-b36a-4924-8c26-5cecb8d5c968\",\n        \"titulo\": \"El amor en los tiempos del covid\",\n        \"autor\": \"Garcia Marquez\",\n        \"fecha\": \"2022-03-05T05:00:00.000Z\",\n        \"isbn\": \"RB-789\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The book with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar libros de una biblioteca que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The library with the given id was not found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"00000000-0000-0000-0000-000000000000",
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar libros de una biblioteca que no existe",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"id\": \"add9d245-590f-4acc-827c-77c2abb28fcd\",\n        \"titulo\": \"Cien añps de seriedad\",\n        \"autor\": \"Garcia Marquez\",\n        \"fecha\": \"1978-01-01T00:00:00.000Z\",\n        \"isbn\": \"RB-666\"\n    },\n    {\n        \"id\": \"cd38f72b-b36a-4924-8c26-5cecb8d5c968\",\n        \"titulo\": \"El amor en los tiempos del covid\",\n        \"autor\": \"Garcia Marquez\",\n        \"fecha\": \"2022-03-05T05:00:00.000Z\",\n        \"isbn\": \"RB-789\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The library with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar un libro de una biblioteca",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/libraries/{{biblioteca_id}}/books/{{libro_id_2}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"{{biblioteca_id}}",
+						"books",
+						"{{libro_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar un libro de una biblioteca",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar un libro de una biblioteca que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The library with the given id was not found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books/{{libro_id_2}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"00000000-0000-0000-0000-000000000000",
+						"books",
+						"{{libro_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar un libro de una biblioteca que no existe",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The library with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar un libro que no está asociado a una biblioteca",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"   pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The book is not associated to the given library\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/libraries/{{biblioteca_id}}/books/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"libraries",
+						"{{biblioteca_id}}",
+						"books",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar un libro que no está asociado a una biblioteca",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/libraries/00000000-0000-0000-0000-000000000000/books/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"libraries",
+								"00000000-0000-0000-0000-000000000000",
+								"books",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The book is not associated to the given library\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "biblioteca_id",
+			"value": "391e38bf-e543-4ca1-978f-1ba2eeceb055"
+		},
+		{
+			"key": "libro_id",
+			"value": "cd38f72b-b36a-4924-8c26-5cecb8d5c968"
+		},
+		{
+			"key": "baseURL",
+			"value": "http://localhost:3000/api/v1"
+		}
+	]
+}
